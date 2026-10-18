@@ -375,12 +375,15 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 }
 .card__chip{
   position:absolute;z-index:2;top:14px;right:14px;
-  width:52px;height:52px;border-radius:13px;overflow:hidden;
-  border:1px solid rgba(255,255,255,.26);
+  width:50px;height:50px;border-radius:13px;
+  display:grid;place-items:center;
+  background:rgba(12,8,20,.55);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.28);
   box-shadow:0 6px 18px rgba(0,0,0,.4);
-  transition:transform .45s var(--spring);
+  font-family:var(--mono);font-size:.84rem;font-weight:700;letter-spacing:.03em;color:#fff;
+  transition:transform .45s var(--spring),background .3s,border-color .3s;
 }
-.card__chip img{width:100%;height:100%;object-fit:cover}
+.card:hover .card__chip{background:rgba(168,85,247,.45);border-color:rgba(255,255,255,.5)}
 .card:hover .card__chip{transform:scale(1.07) rotate(-4deg)}
 .card__over{position:absolute;z-index:2;left:18px;right:18px;bottom:15px}
 .card__head{font-size:clamp(1.15rem,2.1vw,1.42rem);color:#fff;letter-spacing:-.035em;line-height:1.1}
@@ -873,6 +876,11 @@ var SERVICES = [
 var IMG = "assets/img/";
 function many(prefix,n){ var a=[]; for(var i=1;i<=n;i++) a.push(IMG+prefix+"-"+i+"-full.jpg"); return a; }
 
+/* identity mark per project — only 2 of these sites publish a favicon above
+   32px, so a monogram keeps every card consistent instead of half-blurry */
+var MONO = { daiele:"DA", muista:"MU", laplata:"LP", hus:"HU", cleanflow:"CF",
+             parorrey:"PR", jewelry:"LJ", game:"GY", argentina:"AR", hospital:"HS", mobile:"MA" };
+
 /* `stock:true` marks a hero that is a licensed stock photo standing in for an
    NDA build — never a screenshot of the real product. Shown as such in the UI. */
 var PROJECTS = [
@@ -1007,7 +1015,7 @@ document.getElementById("grid").innerHTML = PROJECTS.map(function(p,idx){
     +     '<img class="card__bg" src="'+IMG+p.k+'-card.jpg" alt="'+esc(p.n)+'" loading="lazy" width="880" height="495">'
     +     '<span class="card__scrim"></span>'
     +     '<span class="card__tag">'+esc(p.tag)+'</span>'
-    +     '<span class="card__chip"><img src="'+IMG+p.k+'-thumb.jpg" alt="" loading="lazy" width="132" height="132"></span>'
+    +     '<span class="card__chip" aria-hidden="true">'+MONO[p.k]+'</span>'
     +     '<div class="card__over"><h4 class="card__head">'+esc(p.head)+'</h4>'
     +       '<p class="card__sub">'+esc(p.sub)+'</p></div>'
     +   '</div>'
