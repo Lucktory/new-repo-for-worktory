@@ -98,6 +98,22 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .btn svg{width:15px;height:15px;flex:none;transition:transform .3s var(--ease)}
 .btn:hover svg{transform:translate(2px,-2px)}
 
+/* primary call to action — breathing halo plus a shine that sweeps across */
+.btn--cta{animation:ctaPulse 3.6s var(--ease) infinite}
+.btn--cta::before{
+  content:"";position:absolute;z-index:2;top:0;left:-130%;
+  width:55%;height:100%;transform:skewX(-20deg);
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);
+  animation:ctaShine 3.6s var(--ease) infinite;
+}
+.btn--cta:hover{animation-play-state:paused}
+.btn--cta:hover::before{animation-play-state:paused}
+@keyframes ctaPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(168,85,247,.48)}
+  55%{box-shadow:0 0 0 12px rgba(168,85,247,0)}
+}
+@keyframes ctaShine{0%{left:-130%}58%,100%{left:140%}}
+
 .pill{
   display:inline-flex;align-items:center;
   padding:4px 10px;border-radius:var(--r);
@@ -602,7 +618,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav__cta">
-      <a class="btn btn--primary" href="https://www.workana.com/freelancer/82766eb69a3118e74ec8cc96cde9e8e5" target="_blank" rel="noopener">Start a project</a>
+      <a class="btn btn--primary btn--cta" href="https://www.workana.com/freelancer/82766eb69a3118e74ec8cc96cde9e8e5" target="_blank" rel="noopener">Start a project</a>
       <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks"><span></span></button>
     </div>
   </div>
@@ -617,7 +633,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
     <h1 class="reveal">Senior full-stack developer building <em>products that ship.</em></h1>
     <p class="hero__lead reveal">I take work from an idea to something running in production — the interface people touch, the services behind it, and the data underneath. Web and commerce, data and AI, mobile, enterprise platforms and interactive builds.</p>
     <div class="hero__actions reveal">
-      <a class="btn btn--primary" href="https://www.workana.com/freelancer/82766eb69a3118e74ec8cc96cde9e8e5" target="_blank" rel="noopener">
+      <a class="btn btn--primary btn--cta" href="https://www.workana.com/freelancer/82766eb69a3118e74ec8cc96cde9e8e5" target="_blank" rel="noopener">
         Start a project
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
       </a>
@@ -762,7 +778,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
         </a>
       </div>
       <div class="contact__cta">
-        <a class="btn btn--primary" href="https://www.workana.com/freelancer/82766eb69a3118e74ec8cc96cde9e8e5" target="_blank" rel="noopener">
+        <a class="btn btn--primary btn--cta" href="https://www.workana.com/freelancer/82766eb69a3118e74ec8cc96cde9e8e5" target="_blank" rel="noopener">
           Hire me on Workana
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
         </a>
@@ -861,46 +877,57 @@ function many(prefix,n){ var a=[]; for(var i=1;i<=n;i++) a.push(IMG+prefix+"-"+i
    NDA build — never a screenshot of the real product. Shown as such in the UI. */
 var PROJECTS = [
   { k:"daiele", n:"Daiele — Silk Accessories Store", cat:["web"], url:"https://www.daiele.com/",
+    tag:"E-commerce", head:"Silk, sold worldwide", sub:"Cart to confirmed order through PayPal",
     d:"Storefront and checkout for a premium silk accessories label. Express API over MySQL, with PayPal covering the order lifecycle from cart to confirmation.",
     s:["React","Node.js","Express","MySQL","PayPal"], shots:[IMG+"daiele-full.jpg"] },
 
   { k:"muista", n:"Muista — Ergonomic Furniture Store", cat:["web"], url:"https://muista.eu",
+    tag:"E-commerce", head:"Built for slow decisions", sub:"A catalogue tuned to high-consideration buying",
     d:"Premium furniture commerce on WooCommerce, with catalogue structure and product presentation tuned for a slow, high-consideration purchase.",
     s:["WordPress","WooCommerce","PHP"], shots:[IMG+"muista-full.jpg"] },
 
   { k:"laplata", n:"La Plata Real Estate Portal", cat:["web","saas"], url:"https://inmopropiedades.com.ar",
+    tag:"Marketplace", head:"Search that actually finds", sub:"Structured listings, agent accounts, enquiries",
     d:"Real-estate marketplace and property portal. Custom PHP extends WordPress into listing management, agent accounts and structured property search.",
     s:["WordPress","PHP","MySQL","REST API"], shots:[IMG+"laplata-full.jpg"] },
 
   { k:"hus", n:"Hus Interior — Design Studio Portfolio", cat:["web"], url:"https://husinterior.no",
+    tag:"CMS & Portfolio", head:"Rooms, self-published", sub:"The studio edits its own project work",
     d:"Norwegian interior-design studio portfolio where the team publishes and reorders its own project work, with the CMS shaped around how they present rooms.",
     s:["WordPress","Elementor","PHP","CMS"], shots:[IMG+"hus-full.jpg"] },
 
   { k:"cleanflow", n:"CleanFlow — Service Booking Platform", cat:["web","saas"], url:"https://cleanflow-ttm.webflow.io",
+    tag:"Booking SaaS", head:"Booked in one pass", sub:"Service, time and provider in a single flow",
     d:"Booking and scheduling front end for a cleaning-service operator: service selection, appointment capture and provider scheduling in one flow.",
     s:["React","Next.js","Supabase","Git","Vercel"], shots:[IMG+"cleanflow-full.jpg"] },
 
   { k:"parorrey", n:"Parorrey — Business Intranet & API Platform", cat:["saas"], url:"https://www.parorrey.com",
+    tag:"Intranet", head:"One place to look", sub:"Documents and comms wired to existing tools",
     d:"Internal communication and document flow for a distributed team, with a custom REST layer connecting it to the tooling the company already ran on.",
     s:["WordPress","REST API","PHP"], shots:[IMG+"parorrey-full.jpg"] },
 
   { k:"jewelry", n:"Luxury Jewelry Shopify Storefront", cat:["web"], url:null,
+    tag:"E-commerce", head:"Detail at a glance", sub:"Category-led browsing for very small products",
     d:"Jewellery storefront built on a category-led browsing model, with a UI pass focused on making small, highly detailed products readable at a glance.",
     s:["Shopify","Liquid","UI/UX"], shots:many("jewelry",5) },
 
   { k:"game", n:"Gizli Yörünge — Fantasy Astronomy Puzzle", cat:["games","mobile"], url:null,
+    tag:"Game", head:"Chart the constellations", sub:"Unity mechanics with offline progression",
     d:"Fantasy-astronomy puzzle game for iOS. Unity and C# drive the constellation mechanics, SQLite stores progression locally and a REST layer keeps it in sync.",
     s:["Unity","C#","REST API","SQLite","iOS"], shots:many("game",9) },
 
   { k:"argentina", n:"Argentina Property Data Pipeline", cat:["ai"], url:null, stock:true,
+    tag:"Data Pipeline", head:"Listings into answers", sub:"Scheduled collection into Power BI reporting",
     d:"Scheduled collection pipeline pulling public Argentine listings data into PostgreSQL, with Power BI dashboards and clean CSV and Excel exports for analysts.",
     s:["Python","Power BI","PostgreSQL","CSV","Excel"], shots:[IMG+"argentina-full.jpg"] },
 
   { k:"hospital", n:"Hospital Operations & Analytics Platform", cat:["saas","ai"], url:null, stock:true,
+    tag:"Health SaaS", head:"Records that report", sub:"FastAPI services under a live analytics layer",
     d:"Clinical operations platform. FastAPI services over PostgreSQL, with Pandas shaping records into the Power BI reporting layer administrators read directly.",
     s:["Python","FastAPI","PostgreSQL","Pandas","Power BI"], shots:[IMG+"hospital-full.jpg"] },
 
   { k:"mobile", n:"Cross-Platform Mobile Delivery", cat:["mobile"], url:null, stock:true,
+    tag:"Mobile", head:"Both stores, one codebase", sub:"Native modules only where they earn it",
     d:"Mobile delivery to both stores from a shared codebase, dropping into native Kotlin where the platform APIs required going below the abstraction.",
     s:["React Native","Flutter","Kotlin","Android","iOS"], shots:[IMG+"mobile-full.jpg"] }
 ];
@@ -968,23 +995,32 @@ document.getElementById("chips").innerHTML =
   }).join("");
 
 document.getElementById("grid").innerHTML = PROJECTS.map(function(p,idx){
-  var badge = p.url
-    ? '<span class="shot__badge">'+svg(ICONS.globe,1.8)+'Live site</span>'
-    : '<span class="shot__badge">'+svg(ICONS.lock,1.8)+(p.stock?"Illustrative":"Under NDA")+'</span>';
-  var count = p.shots.length > 1 ? '<span class="shot__n">'+p.shots.length+' screens</span>' : '';
-  var live = p.url
-    ? '<a class="shot__live" href="'+esc(p.url)+'" target="_blank" rel="noopener" data-stop title="Open live site" aria-label="Open '+esc(p.n)+' live site">'+svg(ICONS.ext,2.1)+'</a>'
-    : '';
+  var chip = p.url
+    ? '<a class="card__dom" href="'+esc(p.url)+'" target="_blank" rel="noopener" data-stop'
+      + ' aria-label="Open '+esc(p.n)+' live site">'+esc(host(p.url))+svg(ICONS.ext,2.2)+'</a>'
+    : '<span class="card__dom card__dom--nda">'+svg(ICONS.lock,1.9)
+      + (p.stock ? "Illustrative · under NDA" : "Under NDA") + '</span>';
+
   return '<article class="card" data-i="'+idx+'" data-cats="'+p.cat.join(" ")+'" role="button" tabindex="0"'
     + ' aria-label="'+esc(p.n)+' — open project detail">'
-    + '<div class="shot"><img src="'+IMG+p.k+'-card.jpg" alt="'+esc(p.n)+'" loading="lazy" width="880" height="495">'
-    + badge + count + live + '</div>'
-    + '<div class="card__body"><div class="card__top"><h3>'+esc(p.n)+'</h3>'
-    + '<span class="card__arr">'+svg(ICONS.expand,2.1)+'</span></div>'
-    + '<p class="card__desc">'+esc(p.d)+'</p>'
-    + '<div class="card__stack">'+p.s.map(function(t){ return '<span class="pill">'+esc(t)+'</span>'; }).join("")+'</div>'
-    + (p.url ? '<div class="card__host">'+svg(ICONS.globe,1.7)+esc(host(p.url))+'</div>' : "")
-    + '</div></article>';
+    +   '<div class="card__hero">'
+    +     '<img class="card__bg" src="'+IMG+p.k+'-card.jpg" alt="'+esc(p.n)+'" loading="lazy" width="880" height="495">'
+    +     '<span class="card__scrim"></span>'
+    +     '<span class="card__tag">'+esc(p.tag)+'</span>'
+    +     '<span class="card__chip"><img src="'+IMG+p.k+'-thumb.jpg" alt="" loading="lazy" width="132" height="132"></span>'
+    +     '<div class="card__over"><h4 class="card__head">'+esc(p.head)+'</h4>'
+    +       '<p class="card__sub">'+esc(p.sub)+'</p></div>'
+    +   '</div>'
+    +   '<div class="card__body">'
+    +     '<h3>'+esc(p.n)+'</h3>'
+    +     chip
+    +     '<p class="card__desc">'+esc(p.d)+'</p>'
+    +     '<div class="card__foot">'
+    +       '<span class="card__stack">'+p.s.join(" · ")+'</span>'
+    +       '<span class="card__go">'+svg(ICONS.arrow,2.1)+'</span>'
+    +     '</div>'
+    +   '</div>'
+    + '</article>';
 }).join("");
 
 document.getElementById("techChips").innerHTML = TECH_CATS.map(function(c,i){
