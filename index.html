@@ -431,63 +431,92 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .lb.is-mounted{display:block}
 .lb.is-open{opacity:1}
 .lb__in{
-  position:absolute;inset:0;display:grid;
-  grid-template-rows:auto minmax(0,1fr) auto;
-  gap:clamp(12px,2vw,20px);padding:clamp(14px,3vw,30px);
-  transform:scale(.97) translateY(10px);transition:transform .36s var(--spring);
+  position:absolute;inset:0;display:grid;place-items:center;
+  padding:clamp(10px,2.5vw,32px);overflow:auto;
 }
-.lb.is-open .lb__in{transform:none}
+.lb__sheet{
+  width:min(1180px,100%);max-height:calc(100vh - clamp(20px,5vw,64px));
+  display:grid;grid-template-columns:minmax(0,1.55fr) minmax(300px,.95fr);
+  background:var(--surface);border:1px solid var(--line-2);border-radius:16px;overflow:hidden;
+  box-shadow:0 40px 90px rgba(0,0,0,.6);position:relative;
+  transform:scale(.97) translateY(12px);transition:transform .38s var(--spring);
+}
+.lb.is-open .lb__sheet{transform:none}
+@media (max-width:860px){
+  .lb__sheet{grid-template-columns:1fr;max-height:calc(100vh - 20px);overflow:auto}
+}
 
-.lb__head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;color:#fff}
-.lb__title{font-size:clamp(1.05rem,2.2vw,1.45rem);color:#fff;letter-spacing:-.03em}
-.lb__meta{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.52);margin-top:7px}
 .lb__x{
-  width:40px;height:40px;flex:none;border-radius:var(--r);display:grid;place-items:center;
+  position:absolute;z-index:6;top:14px;right:14px;
+  width:38px;height:38px;border-radius:10px;display:grid;place-items:center;
+  background:rgba(12,8,20,.66);backdrop-filter:blur(8px);
   border:1px solid rgba(255,255,255,.22);color:#fff;
-  transition:background .22s,border-color .22s,transform .35s var(--spring);
+  transition:background .22s,transform .35s var(--spring);
 }
-.lb__x:hover{background:rgba(255,255,255,.14);transform:rotate(90deg)}
-.lb__x svg{width:17px;height:17px}
+.lb__x:hover{background:var(--accent);transform:rotate(90deg)}
+.lb__x svg{width:16px;height:16px}
 
-.lb__stage{position:relative;display:grid;place-items:center;min-height:0}
+/* ---- media column ---- */
+.lb__media{display:flex;flex-direction:column;min-width:0;background:#120C1C;padding:clamp(12px,1.6vw,18px);gap:12px}
+.lb__stage{position:relative;flex:1;min-height:0;display:grid;place-items:center}
 .lb__img{
-  max-width:100%;max-height:100%;object-fit:contain;
-  border-radius:var(--r);border:1px solid rgba(255,255,255,.14);
-  animation:lbIn .4s var(--ease);
+  max-width:100%;max-height:min(62vh,620px);object-fit:contain;
+  border-radius:8px;border:1px solid rgba(255,255,255,.12);
+  animation:lbIn .42s var(--ease);
 }
 @keyframes lbIn{from{opacity:0;transform:scale(.985)}to{opacity:1;transform:none}}
 .lb__nav{
-  position:absolute;top:50%;transform:translateY(-50%);
-  width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
-  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;
+  position:absolute;top:50%;transform:translateY(-50%);z-index:3;
+  width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(12,8,20,.72);border:1px solid rgba(255,255,255,.2);color:#fff;
   transition:background .22s,transform .3s var(--spring);
 }
-.lb__nav:hover{background:rgba(255,255,255,.24);transform:translateY(-50%) scale(1.1)}
-.lb__nav svg{width:19px;height:19px}
-.lb__nav--prev{left:clamp(4px,1.5vw,16px)}
-.lb__nav--next{right:clamp(4px,1.5vw,16px)}
+.lb__nav:hover{background:var(--accent);transform:translateY(-50%) scale(1.1)}
+.lb__nav svg{width:18px;height:18px}
+.lb__nav--prev{left:6px}
+.lb__nav--next{right:6px}
 .lb__nav[hidden]{display:none}
-
-.lb__foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
+.lb__count{
+  position:absolute;z-index:3;right:10px;bottom:10px;
+  padding:4px 10px;border-radius:999px;background:rgba(12,8,20,.76);
+  font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;color:#fff;
+}
 .lb__thumbs{display:flex;gap:7px;flex-wrap:wrap;min-width:0}
 .lb__thumb{
-  width:58px;height:38px;border-radius:2px;overflow:hidden;flex:none;
-  border:1.5px solid transparent;opacity:.45;
+  width:56px;height:38px;border-radius:5px;overflow:hidden;flex:none;
+  border:1.5px solid transparent;opacity:.42;
   transition:opacity .25s,border-color .25s,transform .3s var(--spring);
 }
 .lb__thumb img{width:100%;height:100%;object-fit:cover}
 .lb__thumb:hover{opacity:.85;transform:translateY(-2px)}
 .lb__thumb.is-on{opacity:1;border-color:var(--accent)}
-.lb__note{
-  display:flex;align-items:center;gap:9px;
-  font-family:var(--mono);font-size:.655rem;letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(255,255,255,.58);
+.lb__thumbs:empty{display:none}
+
+/* ---- detail column ---- */
+.lb__info{
+  display:flex;flex-direction:column;gap:14px;align-items:flex-start;
+  padding:clamp(22px,2.6vw,32px) clamp(20px,2.4vw,30px);
+  border-left:1px solid var(--line);overflow:auto;min-width:0;
 }
-.lb__note svg{width:13px;height:13px;flex:none;color:#E3885F}
-.lb__cta{display:flex;gap:10px;align-items:center}
-.lb__cta .btn--primary{background:var(--accent);color:#fff}
-.lb__cta .btn--primary:hover{background:#D8603B}
-@media (max-width:620px){.lb__thumbs{display:none}}
+@media (max-width:860px){.lb__info{border-left:0;border-top:1px solid var(--line)}}
+.lb__tag{
+  font-family:var(--mono);font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);
+}
+.lb__title{font-size:clamp(1.15rem,2vw,1.5rem);color:#fff;letter-spacing:-.035em;line-height:1.2}
+.lb__head{font-size:.93rem;color:var(--ink-2);font-weight:600;line-height:1.45}
+.lb__desc{font-size:.885rem;color:var(--ink-soft);line-height:1.68}
+.lb__block{width:100%;padding-top:14px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:9px}
+.lb__k{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.lb__pills{display:flex;flex-wrap:wrap;gap:6px}
+.lb__note{
+  display:flex;align-items:flex-start;gap:9px;width:100%;
+  padding:12px 13px;border-radius:9px;
+  background:rgba(255,255,255,.04);border:1px solid var(--line-2);
+  font-size:.785rem;line-height:1.5;color:var(--ink-soft);
+}
+.lb__note svg{width:14px;height:14px;flex:none;color:var(--accent);margin-top:2px}
+.lb__cta{display:flex;flex-wrap:wrap;gap:10px;width:100%;margin-top:auto;padding-top:16px}
 
 /* ============================================================
    EXPERTISE — logo tile grid
@@ -514,11 +543,14 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 /* ============================================================
    ABOUT
    ============================================================ */
-.about{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,5vw,76px);align-items:start}
+.about{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,5vw,76px);align-items:stretch}
 @media (max-width:880px){.about{grid-template-columns:1fr;gap:40px}}
-.about__media{position:relative;overflow:hidden;border-radius:var(--r);border:1px solid var(--line)}
-.about__media img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;transition:transform .8s var(--ease)}
+/* the portrait fills whatever height the prose sets, so both columns end level */
+.about__media-wrap{display:flex;flex-direction:column}
+.about__media{position:relative;flex:1;min-height:340px;overflow:hidden;border-radius:10px;border:1px solid var(--line)}
+.about__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 14%;transition:transform .8s var(--ease)}
 .about__media:hover img{transform:scale(1.04)}
+@media (max-width:880px){.about__media{flex:none;min-height:0;aspect-ratio:4/5}}
 .about__cap{
   margin-top:13px;padding-top:12px;border-top:1px solid var(--line);
   font-family:var(--mono);font-size:.665rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);
@@ -567,14 +599,14 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .contact h2{color:#fff;font-size:clamp(1.9rem,3.9vw,2.95rem);max-width:18ch;margin-bottom:20px;letter-spacing:-.042em}
 .contact__lead{color:rgba(255,255,255,.68);max-width:56ch;font-size:clamp(1rem,.9vw + .8rem,1.1rem)}
 
-.channels{display:grid;grid-template-columns:repeat(auto-fit,minmax(216px,1fr));margin-top:clamp(36px,4.5vw,52px);border:1px solid rgba(255,255,255,.16);border-radius:var(--r);overflow:hidden;background:rgba(255,255,255,.16);gap:1px}
+.channels{display:grid;grid-template-columns:repeat(auto-fit,minmax(243px,1fr));margin-top:clamp(36px,4.5vw,52px);border:1px solid rgba(255,255,255,.16);border-radius:10px;overflow:hidden;background:rgba(255,255,255,.16);gap:1px}
 .channel{display:flex;align-items:center;gap:14px;padding:19px 20px;background:rgba(14,9,22,.52);transition:background .28s var(--ease)}
 .channel:hover{background:rgba(168,85,247,.16)}
 .channel__ico{width:30px;height:30px;flex:none;display:grid;place-items:center;color:#C9A3FF;transition:transform .4s var(--spring)}
 .channel:hover .channel__ico{transform:translateY(-3px) scale(1.12)}
 .channel__ico svg{width:19px;height:19px}
 .channel__k{font-family:var(--mono);font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.46);display:block}
-.channel__v{font-size:.88rem;font-weight:600;color:#fff;margin-top:4px;word-break:break-word;display:block}
+.channel__v{font-size:.855rem;font-weight:600;color:#fff;margin-top:4px;overflow-wrap:break-word;display:block}
 
 .contact__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(32px,4vw,44px)}
 .contact__cta .btn--ghost{border-color:rgba(255,255,255,.26);color:#fff}
@@ -806,27 +838,34 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 <!-- ============================ LIGHTBOX ============================ -->
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-labelledby="lbTitle">
   <div class="lb__in">
-    <div class="lb__head">
-      <div>
-        <h3 class="lb__title" id="lbTitle"></h3>
-        <div class="lb__meta" id="lbMeta"></div>
-      </div>
+    <div class="lb__sheet">
       <button class="lb__x" id="lbClose" aria-label="Close">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
       </button>
-    </div>
-    <div class="lb__stage">
-      <img class="lb__img" id="lbImg" alt="">
-      <button class="lb__nav lb__nav--prev" id="lbPrev" aria-label="Previous image">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
-      </button>
-      <button class="lb__nav lb__nav--next" id="lbNext" aria-label="Next image">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
-      </button>
-    </div>
-    <div class="lb__foot">
-      <div class="lb__thumbs" id="lbThumbs"></div>
-      <div class="lb__cta" id="lbCta"></div>
+
+      <div class="lb__media">
+        <div class="lb__stage">
+          <img class="lb__img" id="lbImg" alt="">
+          <button class="lb__nav lb__nav--prev" id="lbPrev" aria-label="Previous image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <button class="lb__nav lb__nav--next" id="lbNext" aria-label="Next image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+          <span class="lb__count" id="lbCount"></span>
+        </div>
+        <div class="lb__thumbs" id="lbThumbs"></div>
+      </div>
+
+      <aside class="lb__info">
+        <span class="lb__tag" id="lbTag"></span>
+        <h3 class="lb__title" id="lbTitle"></h3>
+        <p class="lb__head" id="lbHead"></p>
+        <p class="lb__desc" id="lbDesc"></p>
+        <div class="lb__block"><span class="lb__k">Stack</span><div class="lb__pills" id="lbStack"></div></div>
+        <div class="lb__block"><span class="lb__k">Category</span><div class="lb__pills" id="lbCats"></div></div>
+        <div class="lb__cta" id="lbCta"></div>
+      </aside>
     </div>
   </div>
 </div>
@@ -1111,39 +1150,52 @@ document.getElementById("accessGrid").addEventListener("click", function(e){
    LIGHTBOX
    --------------------------------------------------------------- */
 var lb = document.getElementById("lb"), lbImg = document.getElementById("lbImg"),
-    lbTitle = document.getElementById("lbTitle"), lbMeta = document.getElementById("lbMeta"),
+    lbTitle = document.getElementById("lbTitle"), lbTag = document.getElementById("lbTag"),
+    lbHead = document.getElementById("lbHead"), lbDesc = document.getElementById("lbDesc"),
+    lbStack = document.getElementById("lbStack"), lbCats = document.getElementById("lbCats"),
+    lbCount = document.getElementById("lbCount"),
     lbThumbs = document.getElementById("lbThumbs"), lbCta = document.getElementById("lbCta"),
     lbPrev = document.getElementById("lbPrev"), lbNext = document.getElementById("lbNext");
 var cur = null, idx = 0, lastFocus = null;
+var CAT_LABEL = {}; CATS.forEach(function(c){ CAT_LABEL[c.id] = c.label; });
 
 function show(i){
   idx = (i + cur.shots.length) % cur.shots.length;
   lbImg.src = cur.shots[idx];
   lbImg.alt = cur.n + " — screen " + (idx + 1) + " of " + cur.shots.length;
   lbImg.style.animation = "none"; void lbImg.offsetWidth; lbImg.style.animation = "";
-  lbMeta.textContent = cur.s.join(" · ") + "  ·  " + (idx + 1) + "/" + cur.shots.length;
   [].slice.call(lbThumbs.children).forEach(function(t, n){ t.classList.toggle("is-on", n === idx); });
   var multi = cur.shots.length > 1;
   lbPrev.hidden = !multi; lbNext.hidden = !multi;
+  lbCount.textContent = (idx + 1) + " / " + cur.shots.length;
+  lbCount.hidden = !multi;
 }
 
 function openLb(p){
   cur = p; lastFocus = document.activeElement;
+  lbTag.textContent   = p.tag;
   lbTitle.textContent = p.n;
+  lbHead.textContent  = p.head + " — " + p.sub;
+  lbDesc.textContent  = p.d;
+  lbStack.innerHTML   = p.s.map(function(t){ return '<span class="pill">'+esc(t)+'</span>'; }).join("");
+  lbCats.innerHTML    = p.cat.map(function(c){ return '<span class="pill">'+esc(CAT_LABEL[c])+'</span>'; }).join("");
+
   lbThumbs.innerHTML = p.shots.length > 1 ? p.shots.map(function(s,n){
     return '<button class="lb__thumb" data-n="'+n+'" aria-label="Screen '+(n+1)+'"><img src="'+s+'" alt="" loading="lazy"></button>';
   }).join("") : "";
-  var note = p.url
-    ? ''
-    : '<span class="lb__note">'+svg(ICONS.lock,1.8)
-      + (p.stock
-          ? 'Illustrative image — the real build is under NDA'
-          : 'Client build under NDA — no public link')
-      + '</span>';
+
+  var note = p.url ? "" :
+    '<span class="lb__note">'+svg(ICONS.lock,1.9)
+    + (p.stock
+        ? "The hero above is an illustrative stock image, not the product — this build is covered by a client NDA, so the real screens can't be published."
+        : "Covered by a client NDA, so there is no public link. The screens here are what I'm cleared to show.")
+    + '</span>';
+
   lbCta.innerHTML = note + (p.url
     ? '<a class="btn btn--primary" href="'+esc(p.url)+'" target="_blank" rel="noopener">Open live site'
       + svg(ICONS.ext,2.2) + '</a>'
-    : '');
+    : "");
+
   show(0);
   lb.classList.add("is-mounted");
   requestAnimationFrame(function(){ lb.classList.add("is-open"); });
