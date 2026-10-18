@@ -1060,39 +1060,45 @@ document.getElementById("timeline").innerHTML = TIMELINE.map(function(e){
 /* ---------------------------------------------------------------
    FILTERING — shared by work grid and tech tiles
    --------------------------------------------------------------- */
-function makeFilter(items, chips, attr, emptyEl){
+function makeFilter(items, chips, attr, keyAttr, emptyEl){
+  /* `gen` invalidates the deferred hide/show work of an earlier click, so
+     switching filters faster than the transition cannot strand items. */
+  var gen = 0;
   function apply(f){
-    var shown = 0, order = 0;
+    var g = ++gen, shown = 0, order = 0;
     items.forEach(function(el){
       var match = f === "all" || el.getAttribute(attr).split(" ").indexOf(f) > -1;
-      if(match) shown++;
-      el.classList.toggle("is-out", !match);
       if(match){
+        shown++;
+        el.classList.remove("is-hidden");
         el.style.transitionDelay = Math.min(order++, 10) * 26 + "ms";
-        setTimeout(function(){ el.classList.remove("is-hidden"); }, 0);
+        // let layout settle after display returns, so the fade actually runs
+        requestAnimationFrame(function(){ if(g === gen) el.classList.remove("is-out"); });
       } else {
         el.style.transitionDelay = "0ms";
-        setTimeout(function(){ el.classList.add("is-hidden"); }, 190);
+        el.classList.add("is-out");
+        setTimeout(function(){ if(g === gen) el.classList.add("is-hidden"); }, 190);
       }
     });
     chips.forEach(function(c){
-      var on = c.getAttribute(attr === "data-cats" ? "data-f" : "data-t") === f;
+      var on = c.getAttribute(keyAttr) === f;
       c.classList.toggle("is-on", on);
       c.setAttribute("aria-pressed", String(on));
     });
-    if(emptyEl) setTimeout(function(){ emptyEl.hidden = shown > 0; }, 200);
+    if(emptyEl) setTimeout(function(){ if(g === gen) emptyEl.hidden = shown > 0; }, 200);
   }
   chips.forEach(function(c){
-    c.addEventListener("click", function(){
-      apply(c.getAttribute(attr === "data-cats" ? "data-f" : "data-t"));
-    });
+    c.addEventListener("click", function(){ apply(c.getAttribute(keyAttr)); });
   });
   return apply;
 }
 
 var cards = [].slice.call(document.querySelectorAll(".card"));
-var applyWork = makeFilter(cards, [].slice.call(document.querySelectorAll("#chips .chip")), "data-cats", document.getElementById("empty"));
-makeFilter([].slice.call(document.querySelectorAll(".tile")), [].slice.call(document.querySelectorAll("#techChips .chip")), "data-tc", null);
+var applyWork = makeFilter(cards,
+  [].slice.call(document.querySelectorAll("#chips .chip")), "data-cats", "data-f",
+  document.getElementById("empty"));
+makeFilter([].slice.call(document.querySelectorAll(".tile")),
+  [].slice.call(document.querySelectorAll("#techChips .chip")), "data-tc", "data-t", null);
 
 document.getElementById("accessGrid").addEventListener("click", function(e){
   var btn = e.target.closest("[data-goto]");
