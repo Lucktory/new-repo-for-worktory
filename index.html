@@ -565,23 +565,6 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .about__pt svg{width:16px;height:16px;flex:none;color:var(--accent);margin-top:3px}
 
 /* ============================================================
-   EXPERIENCE
-   ============================================================ */
-.tl{border-top:1px solid var(--line)}
-.tl__item{
-  display:grid;grid-template-columns:168px minmax(0,1fr);gap:clamp(20px,3vw,44px);
-  padding:clamp(24px,2.8vw,32px) clamp(10px,1.5vw,18px);border-bottom:1px solid var(--line);
-  transition:background .3s var(--ease),padding-left .3s var(--ease);
-}
-.tl__item:hover{background:var(--accent-soft);padding-left:clamp(18px,2.5vw,30px)}
-.tl__meta{display:flex;flex-direction:column;gap:8px}
-.tl__cat{font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
-.tl__role{font-family:var(--mono);font-size:.665rem;letter-spacing:.05em;color:var(--ink-soft);line-height:1.6}
-.tl__body h3{font-size:1.08rem;margin-bottom:11px;letter-spacing:-.03em}
-.tl__body p{font-size:.9rem;color:var(--ink-soft);line-height:1.64;max-width:72ch}
-@media (max-width:720px){.tl__item{grid-template-columns:1fr;gap:13px}.tl__meta{flex-direction:row;align-items:center;gap:14px;flex-wrap:wrap}}
-
-/* ============================================================
    CONTACT + FOOTER
    ============================================================ */
 .contact{
@@ -649,7 +632,6 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
       <a href="#service">Service</a>
       <a href="#work">Work</a>
       <a href="#about">About</a>
-      <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav__cta">
@@ -677,7 +659,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
     <div class="stats reveal">
       <div><div class="stats__n" data-count="11">11</div><div class="stats__l">Projects shipped</div></div>
       <div><div class="stats__n" data-count="5">5</div><div class="stats__l">Domains covered</div></div>
-      <div><div class="stats__n" data-count="59" data-suffix="+">59+</div><div class="stats__l">Technologies in use</div></div>
+      <div><div class="stats__n" data-count="33">33</div><div class="stats__l">Technologies in use</div></div>
       <div><div class="stats__n">E2E</div><div class="stats__l">Front to infrastructure</div></div>
     </div>
   </div>
@@ -745,8 +727,8 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">05 — Expertise</span>
-      <h2>The right tool for each layer</h2>
-      <p>A production toolkit chosen per project for reliability, maintainability and running cost — from the interface down to the infrastructure.</p>
+      <h2>The kit I actually ship with</h2>
+      <p>Thirty-three tools in live rotation, grouped by the layer they serve. Each one earned its place by surviving production — not by trending well.</p>
     </div>
     <div class="bar reveal" id="techChips" role="group" aria-label="Filter technologies"></div>
     <div class="tiles reveal" id="tileGrid"></div>
@@ -775,23 +757,12 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
   </div>
 </section>
 
-<!-- ============================ EXPERIENCE ============================ -->
-<section class="section section--rule section--surface" id="experience">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">07 — Experience</span>
-      <h2>Engagements and what changed</h2>
-      <p>Grouped by the kind of problem rather than by employer — what the situation was before, and what the business could do afterwards.</p>
-    </div>
-    <div class="tl reveal" id="timeline"></div>
-  </div>
-</section>
 
 <!-- ============================ CONTACT ============================ -->
 <section class="section section--rule" id="contact">
   <div class="wrap">
     <div class="contact reveal">
-      <span class="eyebrow">08 — Contact</span>
+      <span class="eyebrow">07 — Contact</span>
       <h2>Tell me what you are trying to build.</h2>
       <p class="contact__lead">A short description of the problem is enough to start. I will come back with scope, an approach and a realistic timeline — not a sales call.</p>
       <div class="channels">
@@ -830,7 +801,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
     <p>© <span id="yr">2026</span> Alex Wu — Senior Full-Stack Developer</p>
     <nav>
       <a href="#process">Process</a><a href="#service">Service</a><a href="#work">Work</a>
-      <a href="#about">About</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+      <a href="#about">About</a><a href="#contact">Contact</a>
     </nav>
   </div>
 </footer>
@@ -979,40 +950,26 @@ var PROJECTS = [
     s:["React Native","Flutter","Kotlin","Android","iOS"], shots:[IMG+"mobile-full.jpg"] }
 ];
 
+/* 33 tools in live rotation — every one of these appears in a project above */
 var TECH = [
   ["html5","HTML5","fe"],["css3","CSS3","fe"],["javascript","JavaScript","fe"],["typescript","TypeScript","fe"],
-  ["react","React","fe"],["nextjs","Next.js","fe"],["vue","Vue.js","fe"],["nuxt","Nuxt","fe"],
-  ["angular","Angular","fe"],["svelte","Svelte","fe"],["tailwind","Tailwind CSS","fe"],["bootstrap","Bootstrap","fe"],["vite","Vite","fe"],
-  ["nodejs","Node.js","be"],["express","Express","be"],["nestjs","NestJS","be"],["django","Django","be"],
-  ["fastapi","FastAPI","be"],["flask","Flask","be"],["laravel","Laravel","be"],["symfony","Symfony","be"],
-  ["php","PHP","be"],["dotnet","ASP.NET Core","be"],["spring","Spring Boot","be"],["rails","Ruby on Rails","be"],
-  ["postgresql","PostgreSQL","data"],["mysql","MySQL","data"],["mongodb","MongoDB","data"],["redis","Redis","data"],
-  ["sqlite","SQLite","data"],["supabase","Supabase","data"],["firebase","Firebase","data"],
-  ["python","Python","data"],["pandas","Pandas","data"],["powerbi","Power BI","data"],
-  ["reactnative","React Native","mob"],["flutter","Flutter","mob"],["ionic","Ionic","mob"],["capacitor","Capacitor","mob"],
-  ["kotlin","Kotlin","mob"],["compose","Jetpack Compose","mob"],["java","Java","mob"],["swift","Swift","mob"],
-  ["wordpress","WordPress","com"],["woocommerce","WooCommerce","com"],["shopify","Shopify","com"],
-  ["webflow","Webflow","com"],["stripe","Stripe","com"],["paypal","PayPal","com"],
-  ["unity","Unity","game"],["csharp","C#","game"],["cpp","C++","game"],
-  ["git","Git","ops"],["docker","Docker","ops"],["aws","AWS","ops"],["vercel","Vercel","ops"],
-  ["cloudflare","Cloudflare","ops"],["playwright","Playwright","ops"],["n8n","n8n","ops"]
-];
-var TECH_CATS = [["all","All"],["fe","Frontend"],["be","Backend"],["data","Data & AI"],["mob","Mobile"],["com","Commerce"],["game","Games"],["ops","DevOps"]];
+  ["react","React","fe"],["nextjs","Next.js","fe"],["tailwind","Tailwind CSS","fe"],
 
-var TIMELINE = [
-  { c:"Web & SaaS",     r:"Lead developer · end to end", t:"Service booking and operations",
-    d:"Replaced manual scheduling and scattered client records with a single booking and operations flow. The team books, assigns and tracks jobs in one place, and new staff become productive without being walked through someone's private spreadsheet." },
-  { c:"Web & SaaS",     r:"Platform development",        t:"Real-estate marketplace",
-    d:"Extended a content site into a working marketplace — structured listings, agent accounts and property search that behaves the way buyers expect. The business moved from publishing properties to operating a portal." },
-  { c:"E-commerce",     r:"Commerce builds · 3 stores",  t:"Silk accessories, furniture and jewellery",
-    d:"Three storefronts, each on the platform that suited the catalogue rather than the one that was fashionable. Product presentation, checkout and payment handled through to live orders in every case." },
-  { c:"Enterprise",     r:"Intranet & integration",      t:"Corporate internal platform",
-    d:"Internal communication and document flow for a distributed team, connected through a custom API layer so the intranet reads from systems already in use instead of becoming one more silo nobody opens." },
-  { c:"SaaS & Data",    r:"Backend & analytics",         t:"Clinical operations and reporting",
-    d:"A hospital operations platform with an analytics layer sitting directly on top of it. Records flow from the application into transformed reporting that administrators read themselves, rather than waiting on an export." },
-  { c:"Games & Mobile", r:"Game & app development",      t:"Interactive and cross-platform delivery",
-    d:"A published puzzle game plus cross-platform mobile delivery — local persistence, store submission, and native modules written where the shared codebase could not reach far enough on its own." }
+  ["nodejs","Node.js","be"],["express","Express","be"],["php","PHP","be"],["laravel","Laravel","be"],
+  ["python","Python","be"],["fastapi","FastAPI","be"],["django","Django","be"],
+
+  ["postgresql","PostgreSQL","data"],["mysql","MySQL","data"],["mongodb","MongoDB","data"],
+  ["redis","Redis","data"],["sqlite","SQLite","data"],["supabase","Supabase","data"],["powerbi","Power BI","data"],
+
+  ["reactnative","React Native","mob"],["flutter","Flutter","mob"],["kotlin","Kotlin","mob"],
+  ["swift","Swift","mob"],["unity","Unity","mob"],["csharp","C#","mob"],
+
+  ["wordpress","WordPress","ops"],["woocommerce","WooCommerce","ops"],["shopify","Shopify","ops"],
+  ["docker","Docker","ops"],["aws","AWS","ops"],["vercel","Vercel","ops"]
 ];
+var TECH_CATS = [["all","All"],["fe","Frontend"],["be","Backend"],["data","Data & Analytics"],
+                 ["mob","Mobile & Games"],["ops","Commerce & Ops"]];
+
 
 /* ---------------------------------------------------------------
    RENDER
@@ -1082,11 +1039,6 @@ document.getElementById("tileGrid").innerHTML = TECH.map(function(t){
     + '<span class="tile__n">'+esc(t[1])+'</span></div>';
 }).join("");
 
-document.getElementById("timeline").innerHTML = TIMELINE.map(function(e){
-  return '<article class="tl__item"><div class="tl__meta"><span class="tl__cat">'+esc(e.c)+'</span>'
-    + '<span class="tl__role">'+esc(e.r)+'</span></div>'
-    + '<div class="tl__body"><h3>'+esc(e.t)+'</h3><p>'+esc(e.d)+'</p></div></article>';
-}).join("");
 
 /* marquee — project work flowing across the page, list duplicated for a seamless loop */
 (function(){
@@ -1275,7 +1227,7 @@ if("IntersectionObserver" in window){
       });
     });
   }, { rootMargin:"-45% 0px -50% 0px" });
-  ["process","service","work","about","experience","contact"].forEach(function(id){
+  ["process","service","work","about","contact"].forEach(function(id){
     var el = document.getElementById(id); if(el) spy.observe(el);
   });
 }
