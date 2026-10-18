@@ -1,0 +1,14 @@
+title : Ay Arşivi – Fantasy Astronomy Puzzle Game
+description: A visually immersive mobile puzzle game inspired by astronomy, constellations, and zodiac signs. Features interactive star-connecting challenges, hexagonal puzzles, progressive difficulty levels, achievements, and an elegant celestial-themed interface. Designed to deliver an engaging gaming experience with smooth interactions and intuitive navigation.
+
+Technology Stack
+The screenshots don't reveal the actual development framework, so the following is a suggested stack, not a verified one.
+- Game Engine: Unity (C#) or Godot
+- UI/UX: Custom Mobile Game Interface
+- Graphics: 2D Game Assets, Animations
+- Game Logic: Puzzle Mechanics, Level Progression
+- Platforms: Android / iOS (if supported)
+- Features: Constellation Puzzles, Hexagonal Grid, Zodiac Atlas, Achievements, Hints, Level Tracking
+
+Portfolio Tags
+Mobile Game · Puzzle Game · Game Development · UI/UX Design · 2D Graphics · Interactive Gameplay

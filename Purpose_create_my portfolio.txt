@@ -1,0 +1,37 @@
+Purpose : create my portfolio 
+context : I am a senior full stack dev in IT.
+	  Navigation : Process,  Service, Work, About, Experience, Contact
+	  Portfolio Section : Hero, My work access, Selected work, Expertise, About, Experience,  Contact + footer, 
+	  Process : Match it to the conditions.
+	  Service : Match it to the conditions.
+	  Work : Web app & E-commerce, AI & Machine Learning,  Mobile Apps,  Saas & Enterprise ,  Games & Interactive
+	  About : Match it to the conditions.
+	 Experience : Power BI, Wordpress, Woocommerce, HTML5, CSS3, JavaScript, TypeScript, React, Next.js, Vue.js, Nuxt, Angular, Svelte, Tailwind CSS, Bootstrap
+		     Node.js, Express, NestJS, Django, FastAPI, Laravel,   Symfony, ASP.NET Core, Spring Boot, Ruby on Rails
+		     PostgreSQL, MySQL, MongoDB, Redis, SQLite, Rest API, Git, Docker, Vite, Playwright, Python, FastAPI, Django, Flask, Node.js, NestJS
+		 Kotlin, Jetpack Compose, JavaReact Native, Expo, Flutter, Ionic, Capacitor
+   		 Swift, SwiftUI, Node.js, NestJS, Express, FastAPI, Firebase, Supabase,Django, FastAPI, Laravel,AWS, Vercel, Docker, Cloudflare
+		 C#, C++, Unity,MongoDB, n8n, Monday.com, 
+	 Contact info: telegram Id: @Lucktory_dev, gmail : worktory30@gmail.com ,  WhatsApp : +1(201)6655965 ,   
+	my workana account :https://www.workana.com/freelancer/82766eb69a3118e74ec8cc96cde9e8e5
+	Link to my account if contact button is clicked.
+My experience project : -https://cleanflow-ttm.webflow.io , stack : React, Next.js, supabase, git , vercel
+- https://www.daiele.com/     stack : React,Node.js, Express, MySQL, Paypal
+- Argentina Scrapping Database       stack : python, PowerBI, PostgreSQL, csv, Excel
+- Game    stack : unity,  C#,  RestAPI, SQLite, ios,
+- Mobile App      stack : Android, IOS, ReactNative, Flutter, Kotlin
+- Hospital Saas Dev : Python + FastAPI + PostgreSQL + Pandas + Power BI
+
+Theme : Follow Workana.com 's color style and all style
+Design : modern and awesome ui 
+animation : suitable animation
+Reference : https://lassie-portfolio.vercel.app, https://www.ayushcmd.me and reference real awesome and famous portfolio web site
+result : only html
+	 
+Boundary :- Don't repeat same course
+	  - Don't make unnecessary file and junk files.
+Rule : Set Plan first and check after each step.
+validation: -check if the direction of assessment is correct after complete the each steps.
+
+
+from now on, just do it  the work.  let's start

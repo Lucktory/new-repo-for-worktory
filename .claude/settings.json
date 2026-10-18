@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx -v)",
+      "Read(//c/Program Files/Google/Chrome/Application/**)",
+      "Read(//c/Program Files \\\\\\(x86\\\\\\)/Microsoft/Edge/Application/**)",
+      "Bash(node shot.mjs \"C:\\\\\\\\Users\\\\\\\\Admin\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\claude\\\\\\\\d--Project-Work-Me\\\\\\\\a031bb25-d7ef-4c33-b90f-c5c04b2b2a58\\\\\\\\scratchpad\\\\\\\\out\")",
+      "Bash(node ft.mjs \"file:///C:/Users/Admin/AppData/Local/Temp/claude/d--Project-Work-Me/a031bb25-d7ef-4c33-b90f-c5c04b2b2a58/scratchpad/frametest.html\" \"C:\\\\\\\\Users\\\\\\\\Admin\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\claude\\\\\\\\d--Project-Work-Me\\\\\\\\a031bb25-d7ef-4c33-b90f-c5c04b2b2a58\\\\\\\\scratchpad\\\\\\\\ft_file.png\")"
+    ]
+  }
+}

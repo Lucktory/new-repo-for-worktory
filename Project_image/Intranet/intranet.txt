@@ -1,0 +1,16 @@
+https://www.parorrey.com/
+
+WordPress Plugin & Business Portal Development
+
+
+Technology Stack
+- CMS: WordPress
+- Backend: PHP
+- Database: MySQL
+- Frontend: HTML5, CSS3, JavaScript
+- API: WordPress REST API, JSON API
+- Authentication: JWT, SSO
+- Integrations: Paylocity, MemberClicks, WooCommerce
+- Design: Responsive Web Design, UI/UX
+
+description::A professional WordPress-based platform showcasing custom plugins, secure API integrations, membership portals, and HR management solutions. Focused on responsive design, seamless connectivity, and scalable business functionality.

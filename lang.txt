@@ -1,0 +1,93 @@
+1. ALL PROJECTS
+   All technologies from every category.
+   No separate technology stack required.
+
+2. WEB APPS
+   Frontend: HTML5, CSS3, JavaScript, TypeScript, React, Next.js,
+   Vue.js, Nuxt, Angular, Svelte, Tailwind CSS, Bootstrap
+   Backend: Node.js, Express, NestJS, Django, FastAPI, Laravel,
+   Symfony, ASP.NET Core, Spring Boot, Ruby on Rails
+   Database: PostgreSQL, MySQL, MongoDB, Redis, SQLite
+   APIs: REST, GraphQL, tRPC
+   Tools: Git, Docker, Vite, Playwright
+
+3. AI & MACHINE LEARNING
+   Languages: Python, TypeScript, JavaScript
+   Frontend: React, Next.js, Tailwind CSS
+   Backend: FastAPI, Django, Flask, Node.js, NestJS
+   AI APIs: OpenAI API, Anthropic API, Google Gemini, Hugging Face
+   Frameworks: LangChain, LangGraph, LlamaIndex, PyTorch, TensorFlow,
+   scikit-learn
+   Vector Databases: pgvector, Pinecone, Qdrant, Weaviate, Chroma
+   Infrastructure: PostgreSQL, Redis, Docker, AWS
+
+4. MOBILE APPS
+   Cross-Platform: 
+   Native Android: Kotlin, Jetpack Compose, JavaReact Native, Expo, Flutter, Ionic, Capacitor
+   Native iOS: Swift, SwiftUI, UIKit
+   Backend: Node.js, NestJS, Express, FastAPI, Firebase, Supabase
+   Databases: PostgreSQL, SQLite, MongoDB, Firestore, Realm
+   Services: Firebase Cloud Messaging, OneSignal, RevenueCat
+   Testing: Detox, Maestro, Appium
+
+5. SAAS & ENTERPRISE
+   Frontend: React, Next.js, TypeScript, Angular, Vue.js
+   Backend: NestJS, Express, Django, FastAPI, Laravel,
+   Spring Boot, ASP.NET Core
+   Databases: PostgreSQL, MySQL, SQL Server, MongoDB, Redis
+   Authentication: Auth0, Clerk, Keycloak, OAuth 2.0, JWT
+   Payments: Stripe, Paddle, PayPal
+   Infrastructure: AWS, Azure, GCP, Docker, Kubernetes, Terraform
+   Testing: Jest, Vitest, Playwright, Cypress
+
+6. E-COMMERCE
+   Frontend: Next.js, React, TypeScript, Vue.js, Nuxt
+   CMS & Platforms: WordPress, WooCommerce, Shopify, Magento,
+   Adobe Commerce, BigCommerce, Shopware, PrestaShop
+   Backend: Node.js, NestJS, Laravel, PHP, Django
+   Databases: PostgreSQL, MySQL, MongoDB, Redis
+   Payments: Stripe, PayPal, Adyen, Braintree
+   Search: Algolia, Elasticsearch, Meilisearch
+   Infrastructure: AWS, Vercel, Docker, Cloudflare
+
+7. GAMES & INTERACTIVE
+   Languages: C#, C++, JavaScript, TypeScript, GDScript, Lua
+   Game Engines: Unity, Unreal Engine, Godot, GameMaker, Bevy
+   Browser Games: Phaser, PixiJS, Three.js, Babylon.js
+   Graphics: WebGL, WebGPU, Canvas API
+   Backend: Node.js, Go, WebSockets, Socket.IO
+   Game Services: PlayFab, Nakama, Photon, Unity Gaming Services
+   Databases: PostgreSQL, Redis, MongoDB
+   Tools: Blender, Aseprite, Tiled
+
+8. DEVELOPER TOOLS
+   Languages: TypeScript, JavaScript, Python, Go, Rust
+   Frontend: React, Next.js, Vue.js
+   Backend: Node.js, NestJS, FastAPI, Go, Rust
+   APIs: REST, GraphQL, gRPC, OpenAPI
+   Databases: PostgreSQL, SQLite, Redis, MongoDB
+   Infrastructure: Docker, Kubernetes, Terraform
+   Developer Tools: Git, GitHub Actions, GitLab CI/CD
+   Testing: Jest, Vitest, pytest, Playwright
+   Monitoring: Prometheus, Grafana, OpenTelemetry
+
+9. DATA & CLOUD
+   Languages: Python, SQL, TypeScript, Go, Java
+   Data Processing: pandas, Polars, NumPy, Apache Spark, Apache Flink
+   Data Pipelines: Airflow, Dagster, Prefect, dbt, Airbyte
+   Databases: PostgreSQL, ClickHouse, Snowflake, BigQuery,
+   Amazon Redshift, DuckDB
+   Cloud: AWS, Microsoft Azure, Google Cloud Platform
+   Infrastructure: Docker, Kubernetes, Terraform
+   Analytics: Power BI, Tableau, Metabase, Apache Superset
+   Monitoring: Prometheus, Grafana, Datadog
+
+10. OTHER
+    CMS: WordPress, Drupal, Joomla, Ghost, Strapi, Sanity
+    Website Builders: Webflow, Wix, Squarespace, Framer
+    Desktop: Electron, Tauri, Qt, .NET MAUI
+    Blockchain: Solidity, Ethereum, Solana, Hardhat, Foundry
+    IoT: MQTT, ESP32, Arduino, Raspberry Pi
+    AR/VR: Unity XR, Unreal Engine, OpenXR, WebXR
+    Automation: n8n, Zapier, Make
+    Design: Figma, Storybook, GSAP, Lottie

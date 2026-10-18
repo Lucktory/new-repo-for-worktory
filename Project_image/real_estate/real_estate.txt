@@ -1,0 +1,15 @@
+www.inmopropiedades.com.ar/
+
+Project Title
+iProp – Modern Real Estate Marketplace & Property Listing Website
+
+Technology Stack
+- CMS: WordPress (platform to confirm)
+- Backend: PHP (if WordPress-based)
+- Frontend: HTML5, CSS3, JavaScript
+- Database: MySQL (if WordPress-based)
+- Design: Responsive Web Design, UI/UX
+- Main Features: Property Listings, Advanced Search Filters, User Registration, Property Comparison, Featured Properties, Contact & Valuation Requests
+
+description:
+A modern real estate platform designed to simplify property discovery, featuring intuitive property searches, featured listings, detailed property information, user-friendly navigation, and a responsive browsing experience across desktop and mobile devices.

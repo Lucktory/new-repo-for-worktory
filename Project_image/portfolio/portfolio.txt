@@ -1,0 +1,15 @@
+https://husinterior.no/
+
+Project Title
+HUS Interior – Premium Interior Design & Custom Furniture Website
+
+Technology Stack
+- CMS: WordPress
+- Page Builder: Elementor
+- Frontend: HTML5, CSS3, JavaScript
+- Backend: PHP
+- Database: MySQL
+- Design: Responsive Web Design, UI/UX
+- Features: Project Portfolio, Image Galleries, Custom Furniture Showcase, Contact Forms, Content Management
+
+description: A modern and responsive WordPress website for an interior design and custom furniture studio, featuring elegant design, project galleries, easy navigation, and simple content management with Elementor.

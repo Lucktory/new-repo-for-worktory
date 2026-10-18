@@ -1,0 +1,15 @@
+https://muista.eu/
+Premium Ergonomic Furniture E-Commerce Website
+
+Technology Stack
+- CMS: WordPress
+- E-Commerce: WooCommerce
+- Backend: PHP
+- Database: MySQL
+- Frontend: HTML5, CSS3, JavaScript
+- Design: Responsive Web Design, UI/UX
+- Features: Product Catalog, Shopping Cart, Checkout, Product Variations, Payment Integration
+
+
+description
+A modern, premium e-commerce website for an ergonomic furniture brand, featuring elegant product presentation, responsive layouts, intuitive shopping experiences, and a seamless WooCommerce checkout process.
