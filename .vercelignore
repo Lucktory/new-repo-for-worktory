@@ -1,0 +1,10 @@
+# Source material and working notes — kept in the repo, never shipped to the CDN.
+# Listed by name rather than by glob so a future robots.txt / sitemap.txt still deploys.
+
+Project_image/
+lang.txt
+Purpose_create_my portfolio.txt
+section.png
+project_field.png
+
+.claude/

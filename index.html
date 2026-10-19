@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Alex Wu — Senior Full-Stack Developer</title>
 <meta name="description" content="Senior full-stack developer building web apps, commerce, SaaS platforms, mobile apps and interactive products end to end.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -155,7 +156,6 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
   transition:border-color .3s,background .3s,transform .4s var(--ease);
 }
 .nav.is-stuck{border-bottom-color:var(--line)}
-.nav.is-hidden{transform:translateY(-100%)}
 .nav__inner{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px;transition:height .3s var(--ease)}
 .nav.is-stuck .nav__inner{height:62px}
 
@@ -356,8 +356,24 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 
 /* ---- hero: real screenshot, scrim, overlaid headline ---- */
 .card__hero{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--paper-2)}
-.card__bg{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .9s var(--ease)}
+/* three frames stacked; only the active one is opaque, so they cross-fade */
+.card__bg{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:top center;
+  opacity:0;transition:opacity 1.1s var(--ease),transform .9s var(--ease);
+}
+.card__bg.is-on{opacity:1}
 .card:hover .card__bg{transform:scale(1.06)}
+.card__dots{
+  position:absolute;z-index:3;left:18px;bottom:14px;display:flex;gap:5px;
+  opacity:0;transform:translateY(4px);transition:opacity .3s var(--ease),transform .3s var(--ease);
+}
+.card:hover .card__dots,.card:focus-visible .card__dots{opacity:1;transform:none}
+.card__dot{
+  width:16px;height:3px;border-radius:2px;background:rgba(255,255,255,.3);
+  transition:background .4s var(--ease),width .4s var(--ease);
+}
+.card__dot.is-on{background:#fff;width:24px}
 .card__scrim{
   position:absolute;inset:0;
   background:linear-gradient(180deg,rgba(12,8,20,.62) 0%,rgba(12,8,20,.14) 34%,rgba(12,8,20,.82) 76%,rgba(12,8,20,.95) 100%);
@@ -385,7 +401,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 }
 .card:hover .card__chip{background:rgba(168,85,247,.45);border-color:rgba(255,255,255,.5)}
 .card:hover .card__chip{transform:scale(1.07) rotate(-4deg)}
-.card__over{position:absolute;z-index:2;left:18px;right:18px;bottom:15px}
+.card__over{position:absolute;z-index:2;left:18px;right:18px;bottom:30px}
 .card__head{font-size:clamp(1.15rem,2.1vw,1.42rem);color:#fff;letter-spacing:-.035em;line-height:1.1}
 .card__sub{margin-top:5px;font-size:.775rem;font-weight:500;color:rgba(255,255,255,.74);line-height:1.4}
 
@@ -547,42 +563,12 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 @media (max-width:880px){.about{grid-template-columns:1fr;gap:40px}}
 /* the portrait fills whatever height the prose sets, so both columns end level */
 .about__media-wrap{display:flex;flex-direction:column}
-.about__media{position:relative;flex:1;min-height:340px;overflow:hidden;border-radius:10px}
+.about__media{position:relative;flex:1;min-height:340px;overflow:hidden;border-radius:10px;border:1px solid var(--line)}
+.about__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 12%;transition:transform .9s var(--ease)}
+.about__media:hover img{transform:scale(1.045)}
 @media (max-width:880px){.about__media{flex:none;min-height:0;aspect-ratio:4/5}}
 
-/* --- teahouse frame: lacquer panel, lattice screen, moon-gate arch --- */
-.teahouse{
-  --gold:#C8A24A;
-  --pad:clamp(15px,2.2vw,26px);
-  padding:var(--pad);
-  border:1px solid rgba(200,162,74,.38);
-  background:
-    repeating-linear-gradient(0deg,transparent 0 20px,rgba(200,162,74,.17) 20px 21px),
-    repeating-linear-gradient(90deg,transparent 0 20px,rgba(200,162,74,.17) 20px 21px),
-    repeating-linear-gradient(45deg,transparent 0 14px,rgba(200,162,74,.07) 14px 15px),
-    repeating-linear-gradient(-45deg,transparent 0 14px,rgba(200,162,74,.07) 14px 15px),
-    radial-gradient(130% 62% at 50% -12%,rgba(214,138,62,.30),transparent 62%),
-    linear-gradient(180deg,#3B1F35 0%,#2B1730 58%,#241534 100%);
-  box-shadow:inset 0 0 0 1px rgba(200,162,74,.12), inset 0 0 44px rgba(0,0,0,.45);
-}
-.teahouse__arch{
-  position:absolute;inset:var(--pad);overflow:hidden;
-  border-radius:46% 46% 10px 10px / 33% 33% 10px 10px;
-  border:1.5px solid rgba(200,162,74,.58);
-  box-shadow:0 0 0 4px rgba(20,12,26,.42), 0 20px 46px rgba(0,0,0,.5);
-}
-.teahouse__arch img{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;object-position:center 12%;
-  transition:transform .9s var(--ease);
-}
-.about__media:hover .teahouse__arch img{transform:scale(1.045)}
-/* ruyi cloud ornaments tucked into the corners the arch curves away from */
-.teahouse__orn{position:absolute;z-index:2;width:clamp(26px,3.6vw,40px);color:var(--gold);opacity:.62;pointer-events:none}
-.teahouse__orn--tl{top:calc(var(--pad) + 2px);left:calc(var(--pad) + 2px)}
-.teahouse__orn--tr{top:calc(var(--pad) + 2px);right:calc(var(--pad) + 2px);transform:scaleX(-1)}
-.teahouse__orn--bl{bottom:calc(var(--pad) + 2px);left:calc(var(--pad) + 2px);transform:scaleY(-1);opacity:.4}
-.teahouse__orn--br{bottom:calc(var(--pad) + 2px);right:calc(var(--pad) + 2px);transform:scale(-1);opacity:.4}
+
 .about__cap{
   margin-top:13px;padding-top:12px;border-top:1px solid var(--line);
   font-family:var(--mono);font-size:.665rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);
@@ -591,10 +577,22 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .about__body h2{font-size:clamp(1.8rem,3.3vw,2.6rem);margin-bottom:24px;letter-spacing:-.04em}
 .about__body p{color:var(--ink-soft);margin-bottom:18px;font-size:clamp(.96rem,.85vw + .78rem,1.06rem)}
 .about__body p strong{color:var(--ink);font-weight:600}
-.about__pts{display:grid;margin-top:30px;border-top:1px solid var(--line)}
-.about__pt{display:flex;gap:13px;align-items:flex-start;font-size:.9rem;color:var(--ink-2);padding:15px 0;border-bottom:1px solid var(--line);transition:padding-left .3s var(--ease)}
+.about__q{
+  margin-top:28px;font-family:var(--mono);font-size:.68rem;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+}
+.about__pts{display:grid;margin-top:14px;border-top:1px solid var(--line)}
+.about__pt{display:flex;gap:13px;align-items:flex-start;padding:15px 0;border-bottom:1px solid var(--line);transition:padding-left .3s var(--ease)}
 .about__pt:hover{padding-left:8px}
-.about__pt svg{width:16px;height:16px;flex:none;color:var(--accent);margin-top:3px}
+.about__pt svg{width:16px;height:16px;flex:none;color:var(--accent);margin-top:4px}
+.about__pt b{display:block;font-size:.92rem;font-weight:600;color:var(--ink);letter-spacing:-.018em;margin-bottom:3px}
+.about__pt span{font-size:.855rem;color:var(--ink-soft);line-height:1.55}
+.about__quote{
+  margin:30px 0 22px;padding:16px 0 16px 20px;
+  border-left:2px solid var(--accent);
+  font-size:clamp(1.02rem,1.1vw + .8rem,1.18rem);font-weight:600;
+  color:var(--ink);letter-spacing:-.02em;line-height:1.45;
+}
 
 /* ============================================================
    CONTACT + FOOTER
@@ -771,44 +769,41 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 <section class="section section--rule" id="about">
   <div class="wrap about">
     <div class="about__media-wrap reveal">
-      <div class="about__media teahouse">
-        <div class="teahouse__arch">
-          <img src="assets/img/me.jpg" alt="Portrait of Alex Wu" loading="lazy" width="900" height="1125">
-        </div>
-        <svg class="teahouse__orn teahouse__orn--tl" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-          <path d="M3 3h14M3 3v14" stroke-linecap="round"/>
-          <path d="M9 17c0-4.4 3.6-8 8-8 2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4c0-4.4 3.6-8 8-8"/>
-          <path d="M17 9c4.4 0 8-3.6 8-8" opacity=".7"/>
-          <circle cx="25" cy="25" r="2.2" opacity=".8"/>
-        </svg>
-        <svg class="teahouse__orn teahouse__orn--tr" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-          <path d="M3 3h14M3 3v14" stroke-linecap="round"/>
-          <path d="M9 17c0-4.4 3.6-8 8-8 2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4c0-4.4 3.6-8 8-8"/>
-          <path d="M17 9c4.4 0 8-3.6 8-8" opacity=".7"/>
-          <circle cx="25" cy="25" r="2.2" opacity=".8"/>
-        </svg>
-        <svg class="teahouse__orn teahouse__orn--bl" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-          <path d="M3 3h14M3 3v14" stroke-linecap="round"/>
-          <path d="M9 17c0-4.4 3.6-8 8-8 2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4c0-4.4 3.6-8 8-8"/>
-        </svg>
-        <svg class="teahouse__orn teahouse__orn--br" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-          <path d="M3 3h14M3 3v14" stroke-linecap="round"/>
-          <path d="M9 17c0-4.4 3.6-8 8-8 2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4c0-4.4 3.6-8 8-8"/>
-        </svg>
-      </div>
+      <div class="about__media"><img src="me.png" alt="Portrait of Alex Wu" loading="lazy" width="1536" height="1024"></div>
       <div class="about__cap"><span>Alex Wu</span><span>Full-stack</span></div>
     </div>
     <div class="about__body reveal">
       <span class="eyebrow">06 — About</span>
-      <h2>How I think about building software</h2>
-      <p>I work across the whole stack on purpose. <strong>Most of the expensive problems in a product do not live in the frontend or the backend — they live in the seam between them</strong>, and in the gap between what the data actually looks like and what the interface pretends it looks like. Owning both ends is how those stop being someone else's problem.</p>
-      <p>I would rather ship something small that genuinely works than something large that almost does. A feature that is ninety percent finished is zero percent useful, so I cut scope early and visibly instead of quietly running out of time at the end.</p>
-      <p>Senior, to me, means owning the decision and not just the ticket — saying when a requested approach is the wrong one, and being specific about why.</p>
+      <h2>Let's turn your idea into something real</h2>
+      <p>I believe a successful project starts with something simple: <strong>understanding what the client actually needs.</strong></p>
+      <p>My commitment goes further than delivering the work. I want to understand your goals, respect your ideas, and build solutions that genuinely make sense for your business.</p>
+      <p class="about__q">What you can expect working with me</p>
       <div class="about__pts">
-        <div class="about__pt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5.5 5.5L20 7"/></svg><span>Direct communication — no account manager relaying things in between</span></div>
-        <div class="about__pt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5.5 5.5L20 7"/></svg><span>Written decisions, so the reasoning survives after the project does</span></div>
-        <div class="about__pt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5.5 5.5L20 7"/></svg><span>Code handed over readable, so you are never locked to one developer</span></div>
+        <div class="about__pt">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5.5 5.5L20 7"/></svg>
+          <span><b>Deadlines I keep</b>Your time matters. I work in an organised, accountable way so each project lands within the schedule we agreed.</span>
+        </div>
+        <div class="about__pt">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5.5 5.5L20 7"/></svg>
+          <span><b>Quality in every detail</b>Professional, functional, carefully built solutions — quality stays the priority rather than the first thing traded away.</span>
+        </div>
+        <div class="about__pt">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5.5 5.5L20 7"/></svg>
+          <span><b>Fair, transparent pricing</b>Every client has a different budget. I aim for real value for the money and I am straight about what things cost.</span>
+        </div>
+        <div class="about__pt">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5.5 5.5L20 7"/></svg>
+          <span><b>Your perspective first</b>Before I decide anything, I try to see the project from where you sit. Your expectations, opinions and goals shape the work.</span>
+        </div>
+        <div class="about__pt">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 5.5 5.5L20 7"/></svg>
+          <span><b>Clear, constant communication</b>You stay informed as the work moves. Your suggestions get heard and your questions get answered throughout.</span>
+        </div>
       </div>
+      <blockquote class="about__quote">
+        Your project is important to you — so it will be important to me.
+      </blockquote>
+      <p>I am not here only to finish tasks. I want to build trust, deliver work that holds up, and have you feel secure and satisfied for the whole of the collaboration.</p>
     </div>
   </div>
 </section>
@@ -944,7 +939,7 @@ function many(prefix,n){ var a=[]; for(var i=1;i<=n;i++) a.push(IMG+prefix+"-"+i
 
 /* identity mark per project — only 2 of these sites publish a favicon above
    32px, so a monogram keeps every card consistent instead of half-blurry */
-var MONO = { daiele:"DA", muista:"MU", laplata:"LP", hus:"HU", cleanflow:"CF",
+var MONO = { daiele:"DA", muista:"MU", laplata:"IP", hus:"HU", cleanflow:"CF",
              parorrey:"PR", jewelry:"LJ", game:"GY", argentina:"AR", hospital:"HS", mobile:"MA" };
 
 /* `stock:true` marks a hero that is a licensed stock photo standing in for an
@@ -953,32 +948,32 @@ var PROJECTS = [
   { k:"daiele", n:"Daiele — Silk Accessories Store", cat:["web"], url:"https://www.daiele.com/",
     tag:"E-commerce", head:"Silk, sold worldwide", sub:"Cart to confirmed order through PayPal",
     d:"Storefront and checkout for a premium silk accessories label. Express API over MySQL, with PayPal covering the order lifecycle from cart to confirmation.",
-    s:["React","Node.js","Express","MySQL","PayPal"], shots:[IMG+"daiele-full.jpg"] },
+    s:["React","Node.js","Express","MySQL","PayPal"], shots:many("daiele",4) },
 
   { k:"muista", n:"Muista — Ergonomic Furniture Store", cat:["web"], url:"https://muista.eu",
     tag:"E-commerce", head:"Built for slow decisions", sub:"A catalogue tuned to high-consideration buying",
     d:"Premium furniture commerce on WooCommerce, with catalogue structure and product presentation tuned for a slow, high-consideration purchase.",
-    s:["WordPress","WooCommerce","PHP"], shots:[IMG+"muista-full.jpg"] },
+    s:["WordPress","WooCommerce","PHP"], shots:many("muista",4) },
 
-  { k:"laplata", n:"La Plata Real Estate Portal", cat:["web","saas"], url:"https://inmopropiedades.com.ar",
+  { k:"laplata", n:"iProp — Argentina Real Estate Portal", cat:["web","saas"], url:"https://inmopropiedades.com.ar",
     tag:"Marketplace", head:"Search that actually finds", sub:"Structured listings, agent accounts, enquiries",
     d:"Real-estate marketplace and property portal. Custom PHP extends WordPress into listing management, agent accounts and structured property search.",
-    s:["WordPress","PHP","MySQL","REST API"], shots:[IMG+"laplata-full.jpg"] },
+    s:["WordPress","PHP","MySQL","REST API"], shots:many("laplata",4) },
 
   { k:"hus", n:"Hus Interior — Design Studio Portfolio", cat:["web"], url:"https://husinterior.no",
     tag:"CMS & Portfolio", head:"Rooms, self-published", sub:"The studio edits its own project work",
     d:"Norwegian interior-design studio portfolio where the team publishes and reorders its own project work, with the CMS shaped around how they present rooms.",
-    s:["WordPress","Elementor","PHP","CMS"], shots:[IMG+"hus-full.jpg"] },
+    s:["WordPress","Elementor","PHP","CMS"], shots:many("hus",4) },
 
   { k:"cleanflow", n:"CleanFlow — Service Booking Platform", cat:["web","saas"], url:"https://cleanflow-ttm.webflow.io",
     tag:"Booking SaaS", head:"Booked in one pass", sub:"Service, time and provider in a single flow",
     d:"Booking and scheduling front end for a cleaning-service operator: service selection, appointment capture and provider scheduling in one flow.",
-    s:["React","Next.js","Supabase","Git","Vercel"], shots:[IMG+"cleanflow-full.jpg"] },
+    s:["React","Next.js","Supabase","Git","Vercel"], shots:many("cleanflow",4) },
 
   { k:"parorrey", n:"Parorrey — Business Intranet & API Platform", cat:["saas"], url:"https://www.parorrey.com",
     tag:"Intranet", head:"One place to look", sub:"Documents and comms wired to existing tools",
     d:"Internal communication and document flow for a distributed team, with a custom REST layer connecting it to the tooling the company already ran on.",
-    s:["WordPress","REST API","PHP"], shots:[IMG+"parorrey-full.jpg"] },
+    s:["WordPress","REST API","PHP"], shots:many("parorrey",4) },
 
   { k:"jewelry", n:"Luxury Jewelry Shopify Storefront", cat:["web"], url:null,
     tag:"E-commerce", head:"Detail at a glance", sub:"Category-led browsing for very small products",
@@ -993,17 +988,17 @@ var PROJECTS = [
   { k:"argentina", n:"Argentina Property Data Pipeline", cat:["ai"], url:null, stock:true,
     tag:"Data Pipeline", head:"Listings into answers", sub:"Scheduled collection into Power BI reporting",
     d:"Scheduled collection pipeline pulling public Argentine listings data into PostgreSQL, with Power BI dashboards and clean CSV and Excel exports for analysts.",
-    s:["Python","Power BI","PostgreSQL","CSV","Excel"], shots:[IMG+"argentina-full.jpg"] },
+    s:["Python","Power BI","PostgreSQL","CSV","Excel"], shots:many("argentina",3) },
 
   { k:"hospital", n:"Hospital Operations & Analytics Platform", cat:["saas","ai"], url:null, stock:true,
     tag:"Health SaaS", head:"Records that report", sub:"FastAPI services under a live analytics layer",
     d:"Clinical operations platform. FastAPI services over PostgreSQL, with Pandas shaping records into the Power BI reporting layer administrators read directly.",
-    s:["Python","FastAPI","PostgreSQL","Pandas","Power BI"], shots:[IMG+"hospital-full.jpg"] },
+    s:["Python","FastAPI","PostgreSQL","Pandas","Power BI"], shots:many("hospital",3) },
 
   { k:"mobile", n:"Cross-Platform Mobile Delivery", cat:["mobile"], url:null, stock:true,
     tag:"Mobile", head:"Both stores, one codebase", sub:"Native modules only where they earn it",
     d:"Mobile delivery to both stores from a shared codebase, dropping into native Kotlin where the platform APIs required going below the abstraction.",
-    s:["React Native","Flutter","Kotlin","Android","iOS"], shots:[IMG+"mobile-full.jpg"] }
+    s:["React Native","Flutter","Kotlin","Android","iOS"], shots:many("mobile",3) }
 ];
 
 /* 33 tools in live rotation — every one of these appears in a project above */
@@ -1055,6 +1050,9 @@ document.getElementById("chips").innerHTML =
   }).join("");
 
 document.getElementById("grid").innerHTML = PROJECTS.map(function(p,idx){
+  // up to three card-sized frames per project, cross-faded in place
+  var frames = [];
+  for (var f = 1; f <= Math.min(3, p.shots.length); f++) frames.push(IMG + p.k + "-c" + f + ".jpg");
   var chip = p.url
     ? '<a class="card__dom" href="'+esc(p.url)+'" target="_blank" rel="noopener" data-stop'
       + ' aria-label="Open '+esc(p.n)+' live site">'+esc(host(p.url))+svg(ICONS.ext,2.2)+'</a>'
@@ -1064,8 +1062,16 @@ document.getElementById("grid").innerHTML = PROJECTS.map(function(p,idx){
   return '<article class="card" data-i="'+idx+'" data-cats="'+p.cat.join(" ")+'" role="button" tabindex="0"'
     + ' aria-label="'+esc(p.n)+' — open project detail">'
     +   '<div class="card__hero">'
-    +     '<img class="card__bg" src="'+IMG+p.k+'-card.jpg" alt="'+esc(p.n)+'" loading="lazy" width="880" height="495">'
+    +     frames.map(function(src,n){
+            return '<img class="card__bg'+(n===0?" is-on":"")+'" src="'+src+'" '
+              + 'alt="'+(n===0?esc(p.n):"")+'" loading="lazy" width="880" height="495">';
+          }).join("")
     +     '<span class="card__scrim"></span>'
+    +     (frames.length>1
+        ? '<span class="card__dots" aria-hidden="true">'
+          + frames.map(function(_,n){ return '<span class="card__dot'+(n===0?" is-on":"")+'"></span>'; }).join("")
+          + '</span>'
+        : "")
     +     '<span class="card__tag">'+esc(p.tag)+'</span>'
     +     '<span class="card__chip" aria-hidden="true">'+MONO[p.k]+'</span>'
     +     '<div class="card__over"><h4 class="card__head">'+esc(p.head)+'</h4>'
@@ -1099,7 +1105,7 @@ document.getElementById("tileGrid").innerHTML = TECH.map(function(t){
 /* marquee — project work flowing across the page, list duplicated for a seamless loop */
 (function(){
   var one = PROJECTS.map(function(p){
-    return '<div class="flow__item"><img src="'+IMG+p.k+'-card.jpg" alt="" loading="lazy" width="880" height="495"></div>';
+    return '<div class="flow__item"><img src="'+IMG+p.k+'-c1.jpg" alt="" loading="lazy" width="880" height="495"></div>';
   }).join("");
   document.getElementById("flowTrack").innerHTML = one + one;
 })();
@@ -1141,6 +1147,42 @@ function makeFilter(items, chips, attr, keyAttr, emptyEl){
 }
 
 var cards = [].slice.call(document.querySelectorAll(".card"));
+
+/* ---------------------------------------------------------------
+   CARD IMAGE FLOW — each card drifts through its own frames.
+   Starts staggered so the grid never flips in unison, and pauses
+   under the pointer so a card you are reading stays still.
+   --------------------------------------------------------------- */
+if(!reduced){
+  cards.forEach(function(card, i){
+    var shots = [].slice.call(card.querySelectorAll(".card__bg"));
+    var dots  = [].slice.call(card.querySelectorAll(".card__dot"));
+    if(shots.length < 2) return;
+    var at = 0, hold = false, timer = null, visible = false;
+
+    function step(){
+      if(hold || !visible) return;
+      at = (at + 1) % shots.length;
+      shots.forEach(function(s,n){ s.classList.toggle("is-on", n === at); });
+      dots.forEach(function(d,n){ d.classList.toggle("is-on", n === at); });
+    }
+    function start(){ if(!timer) timer = setInterval(step, 4200); }
+    function stop(){ if(timer){ clearInterval(timer); timer = null; } }
+
+    card.addEventListener("mouseenter", function(){ hold = true; });
+    card.addEventListener("mouseleave", function(){ hold = false; });
+
+    if("IntersectionObserver" in window){
+      new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          visible = e.isIntersecting;
+          if(visible) setTimeout(start, (i % 5) * 850);   // stagger across the grid
+          else stop();
+        });
+      }, { threshold:0.25 }).observe(card);
+    } else { visible = true; start(); }
+  });
+}
 var applyWork = makeFilter(cards,
   [].slice.call(document.querySelectorAll("#chips .chip")), "data-cats", "data-f",
   document.getElementById("empty"));
@@ -1261,16 +1303,13 @@ navLinks.forEach(function(a){
   });
 });
 
-var lastY = 0, ticking = false;
+var ticking = false;
 window.addEventListener("scroll", function(){
   if(ticking) return;
   ticking = true;
   requestAnimationFrame(function(){
-    var y = window.scrollY;
-    nav.classList.toggle("is-stuck", y > 40);
-    // hide on scroll down, reveal on scroll up — but never while the menu is open
-    nav.classList.toggle("is-hidden", y > 320 && y > lastY && !nav.classList.contains("is-open"));
-    lastY = y; ticking = false;
+    nav.classList.toggle("is-stuck", window.scrollY > 40);
+    ticking = false;
   });
 }, { passive:true });
 
