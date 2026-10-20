@@ -613,6 +613,9 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .contact__lead{color:rgba(255,255,255,.68);max-width:56ch;font-size:clamp(1rem,.9vw + .8rem,1.1rem)}
 
 .channels{display:grid;grid-template-columns:repeat(auto-fit,minmax(243px,1fr));margin-top:clamp(36px,4.5vw,52px);border:1px solid rgba(255,255,255,.16);border-radius:10px;overflow:hidden;background:rgba(255,255,255,.16);gap:1px}
+/* with one channel left, the strip hugs the card instead of stretching
+   the full column width; the multi-card rule above is left intact */
+.channels:has(> .channel:only-child){width:max-content;max-width:100%}
 .channel{display:flex;align-items:center;gap:14px;padding:19px 20px;background:rgba(14,9,22,.52);transition:background .28s var(--ease)}
 .channel:hover{background:rgba(168,85,247,.16)}
 .channel__ico{width:30px;height:30px;flex:none;display:grid;place-items:center;color:#C9A3FF;transition:transform .4s var(--spring)}
@@ -817,18 +820,6 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
       <h2>Tell me what you are trying to build.</h2>
       <p class="contact__lead">A short description of the problem is enough to start. I will come back with scope, an approach and a realistic timeline — not a sales call.</p>
       <div class="channels">
-        <a class="channel" href="https://t.me/Lucktory_dev" target="_blank" rel="noopener">
-          <span class="channel__ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.6 20c-.2 1.1-.9 1.4-1.8.9l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.1 13.1l-4.8-1.5c-1-.3-1.1-1 .2-1.5l18.8-7.3c.9-.3 1.6.2 1.3 1.5z"/></svg></span>
-          <span><span class="channel__k">Telegram</span><span class="channel__v">@Lucktory_dev</span></span>
-        </a>
-        <a class="channel" href="mailto:worktory30@gmail.com">
-          <span class="channel__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2.6 6.2 9.4 6.5 9.4-6.5"/></svg></span>
-          <span><span class="channel__k">Email</span><span class="channel__v">worktory30@gmail.com</span></span>
-        </a>
-        <a class="channel" href="https://wa.me/12016655965" target="_blank" rel="noopener">
-          <span class="channel__ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2m0 1.8a8.2 8.2 0 1 1-4.2 15.2l-.3-.2-3 .8.8-3-.2-.3A8.2 8.2 0 0 1 12 3.8m-3.7 4c-.2 0-.5.1-.7.4-.3.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.8 2.1.8 2.6.7 3 .6.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3l-2-1c-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a7.3 7.3 0 0 1-3.6-3.2c-.2-.4 0-.5.2-.7l.5-.6c.1-.2.2-.3.3-.5 0-.2 0-.4-.1-.5l-.9-2c-.2-.5-.4-.5-.6-.5z"/></svg></span>
-          <span><span class="channel__k">WhatsApp</span><span class="channel__v">+1 (201) 665-5965</span></span>
-        </a>
         <a class="channel" href="https://www.workana.com/freelancer/82766eb69a3118e74ec8cc96cde9e8e5" target="_blank" rel="noopener">
           <span class="channel__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7"/></svg></span>
           <span><span class="channel__k">Workana</span><span class="channel__v">Verified profile</span></span>
